@@ -32,13 +32,17 @@ From: emilydolson/CentOS7-Singularity
    tar xfz mfold-3.5-Cross-RedHat-binaries.tar.gz
    rm -f mfold-3.5-Cross-RedHat-binaries.tar.gz
 
+   # Link to dat dir - required in mfold script
+   ln -s /opt/mfold-3.5/dat /usr/local/share/mfold
+   
    echo "Installing mfold_util"
    cd /opt
    mkdir -p mfold_util-4.5
    cd mfold_util-4.5
    wget http://unafold.rna.albany.edu/download/mfold_util-4.5-Linux-binaries.tar.gz
    rm -f mfold_util-4.5-Linux-binaries.tar.gz
-
+   
+   
 %test 
    echo "Test"
 
