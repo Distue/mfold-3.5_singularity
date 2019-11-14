@@ -1,0 +1,135 @@
+Bootstrap: sub
+From: emilydolson/CentOS7-Singularity
+
+
+%help
+   This is container for mfold-3.5 and mfold_util-4.5 backwards compatibility. mfold was developed by Michael Zuker.
+
+
+%labels
+   Maintainer schwarzl@embl.de
+   Version 0.1
+   mfold version 3.5
+   mfold_util version 4.5
+
+%post
+   echo "Installing libraries"
+   yum install -y wget
+   yum groupinstall "Development Tools" -y
+   yum install -y compat-gcc*
+   yum install -y libpng12-1.2.50-10.el7
+   yum install -y libjpeg-turbo-1.2.90-8.el7
+   yum install -y gd-2.0.35-26.el7
+   yum install -y compat-libf2c-34-3.4.6-32.el7
+   
+   # Libraries for mfold_util
+   yum install -y mesa-libGLU*
+   yum install -y libXmu-*
+   
+   echo "Installing mfold"
+   cd /opt
+   mkdir -p mfold-3.5
+   cd mfold-3.5
+   wget http://unafold.rna.albany.edu/download/mfold-3.5-Cross-RedHat-binaries.tar.gz
+   tar xfz mfold-3.5-Cross-RedHat-binaries.tar.gz
+   rm -f mfold-3.5-Cross-RedHat-binaries.tar.gz
+
+   echo "Installing mfold_util"
+   cd /opt
+   mkdir -p mfold_util-4.5
+   cd mfold_util-4.5
+   wget http://unafold.rna.albany.edu/download/mfold_util-4.5-Linux-binaries.tar.gz
+   rm -f mfold_util-4.5-Linux-binaries.tar.gz
+
+%test 
+   echo "Test"
+
+%apprun add_dHdSTm
+   /opt/mfold-3.5/Bin64/add_dHdSTm
+
+%apprun add_dHdSTm2
+   /opt/mfold-3.5/Bin64/add_dHdSTm2
+
+%apprun auxgen
+   /opt/mfold-3.5/Bin64/auxgen
+
+%apprun boxplot_ng
+   /opt/mfold-3.5/Bin64/boxplot_ng
+
+%apprun ct2bp
+   /opt/mfold-3.5/Bin64/ct2bp
+
+%apprun ct_boxplot_ng
+   /opt/mfold-3.5/Bin64/ct_boxplot_ng
+
+%apprun ct_compare
+   /opt/mfold-3.5/Bin64/ct_compare
+
+%apprun distance
+   /opt/mfold-3.5/Bin64/distance
+
+%apprun efn
+   /opt/mfold-3.5/Bin64/efn
+
+%apprun h_num
+   /opt/mfold-3.5/Bin64/h_num
+
+%apprun nafold
+   /opt/mfold-3.5/Bin64/nafold
+
+%apprun newtemp
+   /opt/mfold-3.5/Bin64/newtemp
+
+%apprun overlay_boxplot_ng
+   /opt/mfold-3.5/Bin64/overlay_boxplot_ng
+
+%apprun quikfold
+   /opt/mfold-3.5/Bin64/quikfold
+
+%apprun sav2p_num
+   /opt/mfold-3.5/Bin64/sav2p_num
+
+%apprun quikfold
+   /opt/mfold-3.5/Bin64/quikfold
+
+%apprun sav2plot
+   /opt/mfold-3.5/Bin64/sav2plot
+
+%apprun scorer
+   /opt/mfold-3.5/Bin64/scorer
+
+%apprun sir_graph
+   /opt/mfold-3.5/Bin64/sir_graph
+
+%apprun ss_count
+   /opt/mfold-3.5/Bin64/ss_count
+
+%apprun util_boxplot
+   /opt/mfold_util-4.5/Bin64/util_boxplot
+
+%apprun util_boxplot_ng
+   /opt/mfold_util-4.5/Bin64/boxplot_ng
+
+%apprun util_complot
+   /opt/mfold_util-4.5/Bin64/complot
+
+%apprun util_ct_boxplot
+   /opt/mfold_util-4.5/Bin64/ct_boxplot
+
+%apprun util_ct_boxplot_ng
+   /opt/mfold_util-4.5/Bin64/ct_boxplot_ng
+
+%apprun util_mutplot
+   /opt/mfold_util-4.5/Bin64/mutplot
+
+%apprun util_overlay_boxplot
+   /opt/mfold_util-4.5/Bin64/overlay_boxplot
+
+%apprun util_overlay_boxplot_ng
+   /opt/mfold_util-4.5/Bin64/overlay_boxplot_ng
+
+%apprun util_sir_graph
+   /opt/mfold_util-4.5/Bin64/sir_graph
+
+
+
