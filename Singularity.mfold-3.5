@@ -42,6 +42,11 @@ From: emilydolson/CentOS7-Singularity
    wget http://unafold.rna.albany.edu/download/mfold_util-4.5-Linux-binaries.tar.gz
    rm -f mfold_util-4.5-Linux-binaries.tar.gz
    
+   echo "Adding path"
+   export PATH=/opt/mfold-3.5/scripts:$PATH
+   export PATH=/opt/mfold-3.5/Bin64:$PATH
+   export PATH=/opt/mfold-3.5/dat:$PATH
+   export PATH=/opt/mfold_util-4.5/Bin64:$PATH
    
 %test 
    echo "Test"
